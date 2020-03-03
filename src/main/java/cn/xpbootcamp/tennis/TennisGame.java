@@ -14,16 +14,8 @@ public class TennisGame {
 
     public String getScore() {
         if (player1Score == player2Score) {
-            switch (player1Score) {
-                case 0:
-                    return "Love-All";
-                case 1:
-                    return "Fifteen-All";
-                case 2:
-                    return "Thirty-All";
-                default:
-                    return "Deuce";
-            }
+            if (player1Score >= 3) return "Deuce";
+            else return transformScore(player2Score) + "-All";
         } else if (player1Score >= 4 || player2Score >= 4) {
             int minusResult = player1Score - player2Score;
             if (minusResult == 1) return "Advantage player1";
