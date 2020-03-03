@@ -31,7 +31,8 @@ public class TennisGame {
                     break;
 
             }
-        } else if (player1Score >= 4 || player2Score >= 4) {
+        }
+        else if (player1Score >= 4 || player2Score >= 4) {
             int minusResult = player1Score - player2Score;
             if (minusResult == 1) score = new StringBuilder("Advantage player1");
             else if (minusResult == -1) score = new StringBuilder("Advantage player2");
@@ -44,22 +45,26 @@ public class TennisGame {
                     score.append("-");
                     tempScore = player2Score;
                 }
-                switch (tempScore) {
-                    case 0:
-                        score.append("Love");
-                        break;
-                    case 1:
-                        score.append("Fifteen");
-                        break;
-                    case 2:
-                        score.append("Thirty");
-                        break;
-                    case 3:
-                        score.append("Forty");
-                        break;
-                }
+                transformScore(score, tempScore);
             }
         }
         return score.toString();
+    }
+
+    private void transformScore(StringBuilder score, int tempScore) {
+        switch (tempScore) {
+            case 0:
+                score.append("Love");
+                break;
+            case 1:
+                score.append("Fifteen");
+                break;
+            case 2:
+                score.append("Thirty");
+                break;
+            case 3:
+                score.append("Forty");
+                break;
+        }
     }
 }
