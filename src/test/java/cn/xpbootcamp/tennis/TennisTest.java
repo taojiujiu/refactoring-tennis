@@ -81,22 +81,9 @@ public class TennisTest {
     }
 
     @Test
-    public void checkAllScoresTennisGame1() {
+    public void checkAllScoresTennisGame() {
         TennisGame game = new TennisGame();
         checkAllScores(game);
 
     }
-
-    @Test
-    public void checkAllScoresTennisGame2() {
-        TennisGame game = new TennisGame();
-        checkAllScores(game);
-    }
-
-    @Test
-    public void checkAllScoresTennisGame3() {
-        TennisGame game = new TennisGame();
-        checkAllScores(game);
-    }
-
 }
