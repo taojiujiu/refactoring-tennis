@@ -2,17 +2,7 @@ package cn.xpbootcamp.tennis;
 
 public class TennisGame {
 
-    private int player1Score = 0;
-    private int player2Score = 0;
-
-    public void setPlayerScore(String playerName) {
-        if (playerName.equals("player1"))
-            player1Score += 1;
-        else
-            player2Score += 1;
-    }
-
-    public String getScore() {
+    public String getScore(int player1Score, int player2Score) {
         if (player1Score == player2Score) {
             if (player1Score >= 3) return "Deuce";
             else return transformScore(player2Score) + "-All";
