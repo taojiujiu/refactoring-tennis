@@ -2,21 +2,21 @@ package cn.xpbootcamp.tennis;
 
 public class TennisGame {
 
-    private int playScore1 = 0;
-    private int playScore2 = 0;
+    private int player1Score = 0;
+    private int player2Score = 0;
 
-    public void wonPoint(String playerName) {
+    public void setPlayerScore(String playerName) {
         if (playerName.equals("player1"))
-            playScore1 += 1;
+            player1Score += 1;
         else
-            playScore2 += 1;
+            player2Score += 1;
     }
 
     public String getScore() {
         StringBuilder score = new StringBuilder();
         int tempScore = 0;
-        if (playScore1 == playScore2) {
-            switch (playScore1) {
+        if (player1Score == player2Score) {
+            switch (player1Score) {
                 case 0:
                     score = new StringBuilder("Love-All");
                     break;
@@ -31,18 +31,18 @@ public class TennisGame {
                     break;
 
             }
-        } else if (playScore1 >= 4 || playScore2 >= 4) {
-            int minusResult = playScore1 - playScore2;
+        } else if (player1Score >= 4 || player2Score >= 4) {
+            int minusResult = player1Score - player2Score;
             if (minusResult == 1) score = new StringBuilder("Advantage player1");
             else if (minusResult == -1) score = new StringBuilder("Advantage player2");
             else if (minusResult >= 2) score = new StringBuilder("Win for player1");
             else score = new StringBuilder("Win for player2");
         } else {
             for (int i = 1; i < 3; i++) {
-                if (i == 1) tempScore = playScore1;
+                if (i == 1) tempScore = player1Score;
                 else {
                     score.append("-");
-                    tempScore = playScore2;
+                    tempScore = player2Score;
                 }
                 switch (tempScore) {
                     case 0:
