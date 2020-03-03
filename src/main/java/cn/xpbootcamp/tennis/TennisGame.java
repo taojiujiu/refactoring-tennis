@@ -2,23 +2,26 @@ package cn.xpbootcamp.tennis;
 
 public class TennisGame {
 
-    public String getScore(int player1Score, int player2Score) {
-        if (player1Score == player2Score) {
-            if (player1Score >= 3) return "Deuce";
-            else return transformScore(player2Score) + "-All";
-        } else if (player1Score >= 4 || player2Score >= 4) {
-            int minusResult = player1Score - player2Score;
+    public String getScore(int score1, int score2) {
+        if (score1 == score2) {
+            if (score1 >= 3) return "Deuce";
+            else return transformScore(score2) + "-All";
+        }
+
+        if (Math.max(score1, score2) >= 4) {
+            int minusResult = score1 - score2;
             if (minusResult == 1) return "Advantage player1";
             else if (minusResult == -1) return "Advantage player2";
             else if (minusResult >= 2) return "Win for player1";
             return "Win for player2";
-        } else {
-            return transformScore(player1Score) + "-" + transformScore(player2Score);
         }
+
+        return transformScore(score1) + "-" + transformScore(score2);
+
     }
 
-    private String transformScore(int tempScore) {
-        switch (tempScore) {
+    private String transformScore(int score) {
+        switch (score) {
             case 0:
                 return "Love";
             case 1:
