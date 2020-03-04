@@ -10,19 +10,24 @@ public class TennisGame3 implements TennisGame {
         this.player2Name = player2Name;
     }
 
-    public String getScore(int p1, int p2) {
-        String s;
-        if (p1 < 4 && p2 < 4 && !(p1 + p2 == 6)) {
-            String[] p = new String[]{"Love", "Fifteen", "Thirty", "Forty"};
-            s = p[p1];
-            return (p1 == p2) ? s + "-All" : s + "-" + p[p2];
+    public String getScore(int score1, int score2) {
+        if (isLittleDifferentScore(score1, score2)
+                && hasNotWinner(score1, score2)) {
+            String[] scoreNames = new String[]{"Love", "Fifteen", "Thirty", "Forty"};
+            return (score1 == score2) ? scoreNames[score1] + "-All" : scoreNames[score1] + "-" + scoreNames[score2];
         } else {
-            if (p1 == p2)
+            if (score1 == score2)
                 return "Deuce";
-            s = p1 > p2 ? player1Name : player2Name;
-            return ((p1-p2)*(p1-p2) == 1) ? "Advantage " + s : "Win for " + s;
+            String playerName = score1 > score2 ? player1Name : player2Name;
+            return ((score1 - score2) * (score1 - score2) == 1) ? "Advantage " + playerName : "Win for " + playerName;
         }
     }
 
+    private boolean hasNotWinner(int score1, int score2) {
+        return score1 + score2 < 6;
+    }
 
+    private boolean isLittleDifferentScore(int score1, int score2) {
+        return Math.max(score1, score2) < 4;
+    }
 }
