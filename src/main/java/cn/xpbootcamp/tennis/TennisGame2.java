@@ -6,10 +6,11 @@ public class TennisGame2 implements TennisGame {
 
     public String getScore(int P1point, int P2point) {
         String score = "";
-        score = equalCase(P1point, P2point, score);
+        if (P1point == P2point) return equalCase(P1point);
 
-        score = littleScoreCase(P1point, P2point, score);
-
+        if (Math.max(P1point, P2point) < 4) {
+            return transformScore(P1point) + "-" + transformScore(P2point);
+        }
         score = advantageCase(P1point, P2point, score);
 
         score = winCase(P1point, P2point, score);
@@ -39,50 +40,14 @@ public class TennisGame2 implements TennisGame {
 
     private String littleScoreCase(int P1point, int P2point, String score) {
         if (Math.max(P1point, P2point) < 4) {
-            if (P1point > P2point) {
-                if (P1point == 1)
-                    P1res = "Fifteen";
-                if (P1point == 2)
-                    P1res = "Thirty";
-                if (P1point == 3)
-                    P1res = "Forty";
-                if (P2point == 0)
-                    P2res = "Love";
-                if (P2point == 1)
-                    P2res = "Fifteen";
-                if (P2point == 2)
-                    P2res = "Thirty";
-                score = P1res + "-" + P2res;
-            }
-            if (P2point > P1point) {
-                if (P1point == 0) {
-                    if (P2point == 1)
-                        P2res = "Fifteen";
-                    if (P2point == 2)
-                        P2res = "Thirty";
-                    if (P2point == 3)
-                        P2res = "Forty";
-
-                    P1res = "Love";
-                    score = P1res + "-" + P2res;
-                } else {
-                    if (P2point == 2)
-                        P2res = "Thirty";
-                    if (P2point == 3)
-                        P2res = "Forty";
-                    if (P1point == 1)
-                        P1res = "Fifteen";
-                    if (P1point == 2)
-                        P1res = "Thirty";
-                    score = P1res + "-" + P2res;
-                }
-            }
+            score = transformScore(P1point) + "-" + transformScore(P2point);
         }
         return score;
     }
 
-    private String equalCase(int P1point, int P2point, String score) {
-        if (P1point == P2point && P1point < 4) {
+    private String equalCase(int P1point) {
+        String score = "";
+        if (P1point < 4) {
             if (P1point == 0)
                 score = "Love";
             if (P1point == 1)
@@ -91,8 +56,23 @@ public class TennisGame2 implements TennisGame {
                 score = "Thirty";
             score += "-All";
         }
-        if (P1point == P2point && P1point >= 3)
+        if (P1point >= 3)
             score = "Deuce";
         return score;
+    }
+
+    private String transformScore(int score) {
+        switch (score) {
+            case 0:
+                return "Love";
+            case 1:
+                return "Fifteen";
+            case 2:
+                return "Thirty";
+            case 3:
+                return "Forty";
+            default:
+                throw new RuntimeException("");
+        }
     }
 }
