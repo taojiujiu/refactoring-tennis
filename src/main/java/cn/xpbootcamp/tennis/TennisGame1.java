@@ -1,5 +1,7 @@
 package cn.xpbootcamp.tennis;
 
+import static cn.xpbootcamp.tennis.ScoreUtils.transformScore;
+
 public class TennisGame1 implements TennisGame {
 
     public String getScore(int score1, int score2) {
@@ -18,20 +20,5 @@ public class TennisGame1 implements TennisGame {
 
         return transformScore(score1) + "-" + transformScore(score2);
 
-    }
-
-    private String transformScore(int score) {
-        switch (score) {
-            case 0:
-                return "Love";
-            case 1:
-                return "Fifteen";
-            case 2:
-                return "Thirty";
-            case 3:
-                return "Forty";
-            default:
-                throw new RuntimeException("");
-        }
     }
 }
