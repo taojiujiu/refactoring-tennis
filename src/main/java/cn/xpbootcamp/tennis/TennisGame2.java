@@ -40,27 +40,19 @@ public class TennisGame2 implements TennisGame {
     private String littleScoreCase(int P1point, int P2point, String score) {
         if (Math.max(P1point, P2point) < 4) {
             if (P1point > P2point) {
-                if (P2point == 0) {
-                    if (P1point == 1)
-                        P1res = "Fifteen";
-                    if (P1point == 2)
-                        P1res = "Thirty";
-                    if (P1point == 3)
-                        P1res = "Forty";
-
+                if (P1point == 1)
+                    P1res = "Fifteen";
+                if (P1point == 2)
+                    P1res = "Thirty";
+                if (P1point == 3)
+                    P1res = "Forty";
+                if (P2point == 0)
                     P2res = "Love";
-                    score = P1res + "-" + P2res;
-                } else {
-                    if (P1point == 2)
-                        P1res = "Thirty";
-                    if (P1point == 3)
-                        P1res = "Forty";
-                    if (P2point == 1)
-                        P2res = "Fifteen";
-                    if (P2point == 2)
-                        P2res = "Thirty";
-                    score = P1res + "-" + P2res;
-                }
+                if (P2point == 1)
+                    P2res = "Fifteen";
+                if (P2point == 2)
+                    P2res = "Thirty";
+                score = P1res + "-" + P2res;
             }
             if (P2point > P1point) {
                 if (P1point == 0) {
