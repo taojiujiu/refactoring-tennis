@@ -13,10 +13,10 @@ public class TennisGame2 implements TennisGame {
     }
 
     private String winCase(int P1point, int P2point) {
-        if (P1point>P2point) {
-            return  "Win for player1";
-        }else  {
-            return  "Win for player2";
+        if (P1point > P2point) {
+            return "Win for player1";
+        } else {
+            return "Win for player2";
         }
     }
 
